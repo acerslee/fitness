@@ -2,6 +2,7 @@ import GlobalStyle from '../styles/globalStyle'
 import type { AppProps } from 'next/app'
 
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -9,6 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <GlobalStyle />
       <Navbar />
       <Component {...pageProps} />
+      <Footer />
     </>
   )
 }

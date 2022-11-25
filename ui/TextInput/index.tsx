@@ -1,9 +1,9 @@
-import { FC, forwardRef } from "react";
+import { forwardRef } from "react";
 import styled from 'styled-components'
 
 import { TextInputProps, InputSize } from "./_types";
 
-const TextInput= forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
+const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
   const { label, error, initialValue, size} = props
   return (
     <InputField size={size}>
