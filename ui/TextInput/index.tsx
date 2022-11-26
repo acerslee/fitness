@@ -1,17 +1,29 @@
-import { forwardRef } from 'react'
+import { forwardRef, useState} from 'react'
 import styled from 'styled-components'
 
 import { TextInputProps, InputSize } from './_types'
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
-  const { label, error, initialValue, size } = props
+  const {
+    label,
+    error,
+    initialValue,
+    size,
+    onChange,
+    password = false
+  } = props
+
   return (
     <InputField size={size}>
       {error && <ErrorMessage>{error} </ErrorMessage>}
       {label && <Label>{label}</Label>}
       <input
         ref={ref}
-        type={'text'}
+        type={password ? 'password' : 'text'}
+        onChange={(e) => {
+          onChange(e.target.value)
+        }}
+        defaultValue={initialValue}
       />
     </InputField>
   )

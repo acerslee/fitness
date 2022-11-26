@@ -3,13 +3,14 @@ import styled from 'styled-components'
 
 import { ButtonSize, ButtonProps } from './_types'
 
-const Button: FC<ButtonProps> = ({ label, size, onClick }) => {
+const Button: FC<ButtonProps> = ({ label, size, onClick, disabled = false }) => {
   const buttonSize: ButtonSize = size ?? 'small'
 
   return (
     <ButtonComp
       onClick={onClick}
       buttonSize={buttonSize}
+      disabled={disabled}
     >
       <ButtonLabel>{label}</ButtonLabel>
     </ButtonComp>

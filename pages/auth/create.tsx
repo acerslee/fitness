@@ -1,13 +1,18 @@
+
 import type { NextPage } from 'next'
-import React, { useState, SyntheticEvent } from 'react'
+import React, { useState, useRef, SyntheticEvent } from 'react'
 import { useRouter } from 'next/router'
+
+import Checkbox from '../../components/Checkbox'
 
 import WebContainer from '../../ui/Container'
 import TextInput from '../../ui/TextInput'
 import Button from '../../ui/Button'
 
-const LoginPage: NextPage = () => {
+const CreateAccountPage: NextPage = () => {
   const router = useRouter()
+
+  const [ termsAccepted, setTermsAccepted ] = useState<boolean>(false)
   const [ username, setUsername ] =  useState<string>('')
   const [ password, setPassword ] =  useState<string>('')
 
@@ -18,18 +23,18 @@ const LoginPage: NextPage = () => {
     router.push('/home')
   }
 
-  const submittable = username && password
+  const submittable = username && password && termsAccepted
 
   return (
     <WebContainer>
       <form onSubmit={onSubmit}>
         <TextInput
-            size={'small'}
-            label={'Enter username'}
-            onChange={(value) => {
-              setUsername(value)
-            }}
-          />
+          size={'small'}
+          label={'Enter username'}
+          onChange={(value) => {
+            setUsername(value)
+          }}
+        />
         <TextInput
           size={'small'}
           label={'Enter password'}
@@ -38,6 +43,15 @@ const LoginPage: NextPage = () => {
           }}
           password
         />
+        <Checkbox
+          checked={termsAccepted}
+          onChange={() => {
+            if (termsAccepted){
+              setTermsAccepted(false)
+            } else {
+              setTermsAccepted(true)
+            }
+          }}/>
         <Button
           label={'Click'}
           size="large"
@@ -49,4 +63,4 @@ const LoginPage: NextPage = () => {
   )
 }
 
-export default LoginPage
+export default CreateAccountPage
