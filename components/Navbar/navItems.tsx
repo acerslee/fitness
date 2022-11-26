@@ -37,11 +37,10 @@ const NavText = styled.span`
 `
 
 const NavItems: FC = () => {
-
   return (
     <NavMenu id="nav_menu">
       <NavItem className="nav_item">
-        <Link href="/about" >
+        <Link href="/about">
           <NavText>About</NavText>
         </Link>
       </NavItem>

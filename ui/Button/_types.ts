@@ -1,8 +1,8 @@
-export type ButtonSize = "small" | "medium" | "large"
+export type ButtonSize = 'small' | 'medium' | 'large'
 
 export type ButtonProps = {
   label: string
   size: ButtonSize
-  type: "submit" | "button"
+  type: 'submit' | 'button'
   onClick?(): void
 }

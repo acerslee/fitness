@@ -13,7 +13,6 @@ import vector from '../../assets/images/vector.png'
 import NavItems from './navItems'
 
 const Navbar: FC = () => {
-
   const [toggleHamburger, setToggleHamburger] = useState<boolean>(true)
 
   const isTabletSize = useMediaQuery('(max-width: 1024px)')
@@ -46,19 +45,31 @@ const Navbar: FC = () => {
   }
 
   return (
-    <Header fluid="md" sm={4} md={8} lg={12}>
+    <Header
+      fluid="md"
+      sm={4}
+      md={8}
+      lg={12}
+    >
       <Nav>
         {isTabletSize ? (
           <NavItems />
         ) : (
-          <Col xs={'auto'} md={4} lg={4}>
+          <Col
+            xs={'auto'}
+            md={4}
+            lg={4}
+          >
             <NavItems />
           </Col>
         )}
 
         {/* Convert to hamburger style menu when resolution is tablet size or smaller */}
         {isTabletSize && (
-          <RightNavItem sm={2} md={4}>
+          <RightNavItem
+            sm={2}
+            md={4}
+          >
             <Image
               src={toggleHamburger ? hamburger : vector}
               alt="App navbar icon to show or hide the nav items when clicked"

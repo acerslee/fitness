@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import React, { useRef, SyntheticEvent} from 'react'
+import React, { useRef, SyntheticEvent } from 'react'
 import { useRouter } from 'next/router'
 
 import WebContainer from '../../ui/Container'
@@ -21,10 +21,22 @@ const LoginPage: NextPage = () => {
 
   return (
     <WebContainer>
-      <form onSubmit = {onSubmit}>
-        <TextInput ref={username} size={'small'} label={'Enter username'} />
-        <TextInput ref={password} size={'small'} label={'Enter password'} />
-        <Button label={'Click'} size='large' type='submit' />
+      <form onSubmit={onSubmit}>
+        <TextInput
+          ref={username}
+          size={'small'}
+          label={'Enter username'}
+        />
+        <TextInput
+          ref={password}
+          size={'small'}
+          label={'Enter password'}
+        />
+        <Button
+          label={'Click'}
+          size="large"
+          type="submit"
+        />
       </form>
     </WebContainer>
   )

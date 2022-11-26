@@ -1,15 +1,13 @@
-import { forwardRef } from "react";
+import { forwardRef } from 'react'
 import styled from 'styled-components'
 
-import { TextInputProps, InputSize } from "./_types";
+import { TextInputProps, InputSize } from './_types'
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
-  const { label, error, initialValue, size} = props
+  const { label, error, initialValue, size } = props
   return (
     <InputField size={size}>
-      {label &&
-        <Label>{label}</Label>
-      }
+      {label && <Label>{label}</Label>}
       <input
         ref={ref}
         type={'text'}
@@ -18,7 +16,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
   )
 })
 
-const InputField = styled('div')<{size: InputSize}>`
+const InputField = styled('div')<{ size: InputSize }>`
   display: flex;
   flex-direction: column;
 `
@@ -26,6 +24,5 @@ const InputField = styled('div')<{size: InputSize}>`
 const Label = styled('span')`
   font-size: 1rem;
 `
-
 
 export default TextInput

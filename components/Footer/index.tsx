@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 
@@ -12,11 +12,7 @@ const Footer: FC = () => {
 
   if (doNotRenderFooter) return null
 
-  return (
-    <FooterContainer>
-      hello
-    </FooterContainer>
-  )
+  return <FooterContainer>hello</FooterContainer>
 }
 
 const FooterContainer = styled('footer')`

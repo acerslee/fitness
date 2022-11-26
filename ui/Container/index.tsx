@@ -6,11 +6,7 @@ interface Props {
 }
 
 const WebContainer: FC<Props> = ({ children }) => {
-  return(
-    <Container fluid="large">
-      {children}
-    </Container>
-  )
+  return <Container fluid="large">{children}</Container>
 }
 
 export default WebContainer
