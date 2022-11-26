@@ -1,18 +1,19 @@
 import Head from 'next/head'
-import React, { FC } from 'react'
+import React, { FC, useCallback } from 'react'
+import { useRouter } from 'next/router'
 
-interface Props {
-  path: string
-}
+const SEO: FC = () => {
+  const router = useRouter()
 
-const SEO: FC<Props> = (path) => {
-  const dynamicTitle = (route: string): string => {
+  const dynamicTitle = useCallback((): string => {
+    if (router.pathname.includes('/login')) return 'Login'
+
     return 'Fitness'
-  }
+  }, [router.pathname])
 
   return (
     <Head>
-      <title>{dynamicTitle(path.path)}</title>
+      <title>{dynamicTitle()}</title>
       <meta
         name="viewport"
         content="initial-scale=1.0, width=device-width"
@@ -20,7 +21,7 @@ const SEO: FC<Props> = (path) => {
       <meta
         name="description"
         content="Fitness app"
-      ></meta>
+      />
       <meta charSet="UTF-8"></meta>
       <link
         rel="apple-touch-icon"
