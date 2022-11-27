@@ -8,12 +8,11 @@ import Button from '../../ui/Button'
 
 const LoginPage: NextPage = () => {
   const router = useRouter()
-  const [ username, setUsername ] =  useState<string>('')
-  const [ password, setPassword ] =  useState<string>('')
+  const [username, setUsername] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
 
   const onSubmit = (e: SyntheticEvent): void => {
     e.preventDefault()
-
 
     router.push('/home')
   }
@@ -24,12 +23,12 @@ const LoginPage: NextPage = () => {
     <WebContainer>
       <form onSubmit={onSubmit}>
         <TextInput
-            size={'small'}
-            label={'Enter username'}
-            onChange={(value) => {
-              setUsername(value)
-            }}
-          />
+          size={'small'}
+          label={'Enter username'}
+          onChange={(value) => {
+            setUsername(value)
+          }}
+        />
         <TextInput
           size={'small'}
           label={'Enter password'}

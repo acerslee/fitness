@@ -1,17 +1,10 @@
-import { forwardRef, useState} from 'react'
+import { forwardRef, useState } from 'react'
 import styled from 'styled-components'
 
 import { TextInputProps, InputSize } from './_types'
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
-  const {
-    label,
-    error,
-    initialValue,
-    size,
-    onChange,
-    password = false
-  } = props
+  const { label, error, initialValue, size, onChange, password = false } = props
 
   return (
     <InputField size={size}>
@@ -36,8 +29,7 @@ const InputField = styled('div')<{ size: InputSize }>`
     (size === 'large' && '382px') ||
     (size === 'medium' && '310px') ||
     (size === 'small' && '272px') ||
-    (size === 'full' && '100%')
-  }
+    (size === 'full' && '100%')};
 `
 
 const Label = styled('span')`

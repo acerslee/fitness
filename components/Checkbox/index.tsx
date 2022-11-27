@@ -1,4 +1,4 @@
-import { FC, SyntheticEvent } from "react";
+import { FC, SyntheticEvent } from 'react'
 import styled from 'styled-components'
 
 interface CheckboxProps {
@@ -9,13 +9,25 @@ interface CheckboxProps {
 const Checkbox: FC<CheckboxProps> = ({ checked, onChange }) => {
   return (
     <>
-      <CheckboxContainer type="checkbox" name="checkbox" onChange={onChange} checked={checked} />
-      <label htmlFor="checkbox">I agree to the terms and conditions.</label>
+      <CheckboxContainer
+        aria-checked={checked}
+        type="checkbox"
+        name="checkbox"
+        onChange={onChange}
+        checked={checked}
+      />
+      <CheckboxLabel htmlFor="checkbox">
+        I agree to the terms and conditions.
+      </CheckboxLabel>
     </>
   )
 }
 
-const CheckboxContainer = styled.input``
+const CheckboxContainer = styled('input')``
 
+const CheckboxLabel = styled('label')`
+  font-size: 1rem;
+  font-family: Arial;
+`
 
 export default Checkbox

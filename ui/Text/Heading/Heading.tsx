@@ -16,9 +16,33 @@ const getHeadingStyle = (size: TextSize) => {
   return H5Style
 }
 
-export const H1: FC<TextProps> = (props) => <HeadingText {...props} size={1} />
-export const H2: FC<TextProps> = (props) => <HeadingText {...props} size={2} />
-export const H3: FC<TextProps> = (props) => <HeadingText {...props} size={3} />
-export const H4: FC<TextProps> = (props) => <HeadingText {...props} size={4} />
-export const H5: FC<TextProps> = (props) => <HeadingText {...props} size={5} />
-
+export const H1: FC<TextProps> = (props) => (
+  <HeadingText
+    {...props}
+    size={1}
+  />
+)
+export const H2: FC<TextProps> = (props) => (
+  <HeadingText
+    {...props}
+    size={2}
+  />
+)
+export const H3: FC<TextProps> = (props) => (
+  <HeadingText
+    {...props}
+    size={3}
+  />
+)
+export const H4: FC<TextProps> = (props) => (
+  <HeadingText
+    {...props}
+    size={4}
+  />
+)
+export const H5: FC<TextProps> = (props) => (
+  <HeadingText
+    {...props}
+    size={5}
+  />
+)

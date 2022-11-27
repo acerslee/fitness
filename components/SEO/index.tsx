@@ -7,8 +7,9 @@ const SEO: FC = () => {
 
   const dynamicTitle = useCallback((): string => {
     if (router.pathname.includes('/login')) return 'Login'
+    if (router.pathname.includes('/create')) return 'Registration'
 
-    return 'Fitness'
+    return 'Fitness App'
   }, [router.pathname])
 
   return (
