@@ -6,6 +6,11 @@ const NavItems: FC = () => {
   return (
     <NavMenu id="nav_menu">
       <NavItem className="nav_item">
+        <Link href="/dashboard">
+          <NavText>Dashboard</NavText>
+        </Link>
+      </NavItem>
+      <NavItem className="nav_item">
         <Link href="/about">
           <NavText>About</NavText>
         </Link>

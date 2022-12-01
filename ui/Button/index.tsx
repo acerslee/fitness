@@ -1,11 +1,12 @@
 import React, { FC } from 'react'
-import styled from 'styled-components'
 
-import { ButtonSize, ButtonProps } from './_types'
+import { ButtonComp, ButtonLabel } from './_styles'
+import { ButtonSize, ButtonProps, ButtonStyle } from './_types'
 
 const Button: FC<ButtonProps> = ({
   label,
   size,
+  buttonStyle,
   onClick,
   disabled = false,
 }) => {
@@ -22,22 +23,22 @@ const Button: FC<ButtonProps> = ({
   )
 }
 
-const ButtonComp = styled('button')<{ buttonSize: ButtonSize }>`
-  height: 3.25rem;
-  border-radius: 0.75rem;
-  width: ${({ buttonSize }) =>
-    (buttonSize === 'large' && '382px') ||
-    (buttonSize === 'medium' && '310px') ||
-    (buttonSize === 'small' && '272px')};
-  background-color: orange;
+const getButtonStyle = (style: ButtonStyle) => {
+  if (style === 'primary') return ''
+}
 
-  &: hover {
-    cursor: pointer;
-  }
-`
+export const PrimaryButton: FC<ButtonProps> = (props) => (
+  <Button
+    {...props}
+    buttonStyle="primary"
+  />
+)
 
-const ButtonLabel = styled('span')`
-  font-size: 1rem;
-`
+export const SecondaryButton: FC<ButtonProps> = (props) => (
+  <Button
+    {...props}
+    buttonStyle="secondary"
+  />
+)
 
 export default Button
