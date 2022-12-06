@@ -26,6 +26,7 @@ const Nav = styled(BootstrapNav)`
 `
 
 const Link = styled(Nav.Link)`
+  color: #3a3c41;
   transition: text-decoration 0.5s ease;
   &: hover {
     text-decoration: underline;

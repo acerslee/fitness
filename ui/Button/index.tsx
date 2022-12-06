@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, forwardRef } from 'react'
 
 import {
   ButtonLabel,
@@ -7,19 +7,20 @@ import {
 } from './_styles'
 import { ButtonSize, ButtonProps, ButtonStyle } from './_types'
 
-const Button: FC<ButtonProps> = ({
+const Button = forwardRef<HTMLButtonElement ,ButtonProps>(({
   label,
   size,
   buttonStyle,
   onClick,
   disabled = false,
-}) => {
+}, ref) => {
   const buttonSize: ButtonSize = size ?? 'small'
 
   const ButtonStyle = getButtonStyle(buttonStyle)
 
   return (
     <ButtonStyle
+      ref={ref}
       onClick={onClick}
       buttonSize={buttonSize}
       disabled={disabled}
@@ -27,7 +28,7 @@ const Button: FC<ButtonProps> = ({
       <ButtonLabel>{label}</ButtonLabel>
     </ButtonStyle>
   )
-}
+})
 
 const getButtonStyle = (style: ButtonStyle) => {
   if (style === 'primary') return PrimaryButtonStyle

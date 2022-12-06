@@ -1,4 +1,4 @@
-import { forwardRef, useState } from 'react'
+import { forwardRef } from 'react'
 import styled from 'styled-components'
 
 import { TextInputProps, InputSize } from './_types'
