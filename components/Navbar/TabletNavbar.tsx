@@ -5,9 +5,10 @@ import WebContainer from '../../ui/Container'
 
 import hamburger from '../../assets/images/hamburger.png'
 import vector from '../../assets/images/vector.png'
+import styled from 'styled-components'
 
 const TabletNavbar: FC = () => {
-  const [toggleHamburger, setToggleHamburger] = useState<boolean>(false)
+  const [toggleHamburger, setToggleHamburger] = useState<boolean>(true)
 
   const toggleNavMenu = (): void => {
     setToggleHamburger(false)
@@ -23,7 +24,7 @@ const TabletNavbar: FC = () => {
 
   return (
     <WebContainer>
-      <header>
+      <TabletHeader>
         <Image
           src=""
           alt="shortcut to home page"
@@ -38,10 +39,18 @@ const TabletNavbar: FC = () => {
               closeMenu()
             }
           }}
+          height={16.67}
+          width={16.67}
         />
-      </header>
+      </TabletHeader>
     </WebContainer>
   )
 }
+
+const TabletHeader = styled('header')`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+`
 
 export default TabletNavbar

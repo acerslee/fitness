@@ -1,30 +1,26 @@
 import { FC } from 'react'
 import Image from 'next/image'
-import styled from 'styled-components'
-import Col from 'react-bootstrap/Col'
+import { Navbar } from 'react-bootstrap'
 
 import WebContainer from '../../ui/Container'
 
-import NavItems from './navItems'
+import NavItems from './components/navItems'
 
 const WebNavbar: FC = () => {
   return (
     <WebContainer>
-      <header>
-        <Image
-          src=""
-          alt="shortcut to home page"
-        />
-        <Col
-          xs={'auto'}
-          md={4}
-          lg={4}
-        >
-          <NavItems />
-        </Col>
-      </header>
+      <Navbar>
+        <Navbar.Brand href="/">
+          <Image
+            src=""
+            alt="shortcut to home page"
+          />
+        </Navbar.Brand>
+        <NavItems />
+      </Navbar>
     </WebContainer>
   )
 }
+
 
 export default WebNavbar

@@ -1,6 +1,10 @@
 import React, { FC } from 'react'
 
-import { ButtonComp, ButtonLabel } from './_styles'
+import {
+  ButtonLabel,
+  PrimaryButtonStyle,
+  SecondaryButtonStyle,
+} from './_styles'
 import { ButtonSize, ButtonProps, ButtonStyle } from './_types'
 
 const Button: FC<ButtonProps> = ({
@@ -12,32 +16,48 @@ const Button: FC<ButtonProps> = ({
 }) => {
   const buttonSize: ButtonSize = size ?? 'small'
 
+  const ButtonStyle = getButtonStyle(buttonStyle)
+
   return (
-    <ButtonComp
+    <ButtonStyle
       onClick={onClick}
       buttonSize={buttonSize}
       disabled={disabled}
     >
       <ButtonLabel>{label}</ButtonLabel>
-    </ButtonComp>
+    </ButtonStyle>
   )
 }
 
 const getButtonStyle = (style: ButtonStyle) => {
-  if (style === 'primary') return ''
+  if (style === 'primary') return PrimaryButtonStyle
+
+  return SecondaryButtonStyle
 }
 
-export const PrimaryButton: FC<ButtonProps> = (props) => (
+type StrippedProps = Pick<
+  ButtonProps,
+  'onClick' | 'disabled' | 'label' | 'size' | 'type'
+>
+
+export const PrimaryButton: FC<StrippedProps> = (props) => (
   <Button
     {...props}
     buttonStyle="primary"
   />
 )
 
-export const SecondaryButton: FC<ButtonProps> = (props) => (
+export const SecondaryButton: FC<StrippedProps> = (props) => (
   <Button
     {...props}
     buttonStyle="secondary"
+  />
+)
+
+export const ErrorButton: FC<StrippedProps> = (props) => (
+  <Button
+    {...props}
+    buttonStyle="error"
   />
 )
 
