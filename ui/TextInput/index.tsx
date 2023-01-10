@@ -13,6 +13,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
       <input
         ref={ref}
         type={password ? 'password' : 'text'}
+        maxLength={20}
         onChange={(e) => {
           onChange(e.target.value)
         }}

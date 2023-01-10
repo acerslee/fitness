@@ -8,5 +8,5 @@ export type ButtonProps = {
   buttonStyle: ButtonStyle
   disabled?: boolean
   type?: 'submit' | 'button'
-  onClick: () => void
+  onClick?: () => void
 }

@@ -1,4 +1,4 @@
-import { FC, SyntheticEvent } from 'react'
+import { FC, SyntheticEvent, forwardRef } from 'react'
 import styled from 'styled-components'
 
 interface CheckboxProps {
@@ -6,10 +6,11 @@ interface CheckboxProps {
   onChange: (e: SyntheticEvent) => void
 }
 
-const Checkbox: FC<CheckboxProps> = ({ checked, onChange }) => {
+const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({ checked, onChange}, ref) => {
   return (
     <>
       <CheckboxContainer
+        ref={ref}
         aria-checked={checked}
         type="checkbox"
         name="checkbox"
@@ -21,7 +22,7 @@ const Checkbox: FC<CheckboxProps> = ({ checked, onChange }) => {
       </CheckboxLabel>
     </>
   )
-}
+})
 
 const CheckboxContainer = styled('input')``
 

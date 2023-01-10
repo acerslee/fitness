@@ -12,8 +12,8 @@ const CreateAccountPage: NextPage = () => {
   const router = useRouter()
 
   const [termsAccepted, setTermsAccepted] = useState<boolean>(false)
-  const [username, setUsername] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
+  const usernameRef = useRef<HTMLInputElement | null>(null)
+  const passwordRef = useRef<HTMLInputElement | null>(null)
 
   const onSubmit = (e: SyntheticEvent): void => {
     e.preventDefault()
@@ -21,7 +21,7 @@ const CreateAccountPage: NextPage = () => {
     router.push('/home')
   }
 
-  const submittable = username && password && termsAccepted
+  const submittable = usernameRef && passwordRef && termsAccepted
 
   return (
     <WebContainer>
@@ -30,14 +30,12 @@ const CreateAccountPage: NextPage = () => {
           size={'small'}
           label={'Enter username'}
           onChange={(value) => {
-            setUsername(value)
           }}
         />
         <TextInput
           size={'small'}
           label={'Enter password'}
           onChange={(value) => {
-            setPassword(value)
           }}
           password
         />
