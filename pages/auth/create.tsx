@@ -29,14 +29,12 @@ const CreateAccountPage: NextPage = () => {
         <TextInput
           size={'small'}
           label={'Enter username'}
-          onChange={(value) => {
-          }}
+          onChange={(value) => {}}
         />
         <TextInput
           size={'small'}
           label={'Enter password'}
-          onChange={(value) => {
-          }}
+          onChange={(value) => {}}
           password
         />
         <Checkbox

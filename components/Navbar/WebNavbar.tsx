@@ -22,5 +22,4 @@ const WebNavbar: FC = () => {
   )
 }
 
-
 export default WebNavbar

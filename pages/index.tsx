@@ -2,7 +2,7 @@ import { Auth, ThemeSupa } from '@supabase/auth-ui-react'
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import styled from 'styled-components'
 
-import AccountPage from '../components/Account/Account'
+import AccountPage from '../components/Account'
 
 const Home = () => {
   const session = useSession()
@@ -14,13 +14,12 @@ const Home = () => {
         <Auth
           providers={['google']}
           supabaseClient={supabase}
-          appearance={{ theme: ThemeSupa}}
+          appearance={{ theme: ThemeSupa }}
           theme="dark"
         />
       ) : (
         <>
-        <p>Accoutn page goes here</p>
-        <AccountPage />
+          <AccountPage />
         </>
       )}
     </MainContainer>

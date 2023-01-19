@@ -13,17 +13,23 @@ import SEO from '../components/SEO'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
-function MyApp({ Component, pageProps }: AppProps<{ initialSession: Session}>) {
+function MyApp({
+  Component,
+  pageProps,
+}: AppProps<{ initialSession: Session }>) {
   const [supabase] = useState(() => createBrowserSupabaseClient())
 
   return (
-    <SessionContextProvider supabaseClient={supabase} initialSession={pageProps.initialSession}>
+    <SessionContextProvider
+      supabaseClient={supabase}
+      initialSession={pageProps.initialSession}
+    >
       {/* <Auth.UserContextProvider supabaseClient={supabase}> */}
-        <GlobalStyle />
-        <SEO />
-        <Navbar />
-        <Component {...pageProps} />
-        <Footer />
+      <GlobalStyle />
+      <SEO />
+      <Navbar />
+      <Component {...pageProps} />
+      <Footer />
       {/* </Auth.UserContextProvider>/ */}
     </SessionContextProvider>
   )

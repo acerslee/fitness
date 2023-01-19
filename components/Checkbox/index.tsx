@@ -6,23 +6,25 @@ interface CheckboxProps {
   onChange: (e: SyntheticEvent) => void
 }
 
-const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(({ checked, onChange}, ref) => {
-  return (
-    <>
-      <CheckboxContainer
-        ref={ref}
-        aria-checked={checked}
-        type="checkbox"
-        name="checkbox"
-        onChange={onChange}
-        checked={checked}
-      />
-      <CheckboxLabel htmlFor="checkbox">
-        I agree to the terms and conditions.
-      </CheckboxLabel>
-    </>
-  )
-})
+const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
+  ({ checked, onChange }, ref) => {
+    return (
+      <>
+        <CheckboxContainer
+          ref={ref}
+          aria-checked={checked}
+          type="checkbox"
+          name="checkbox"
+          onChange={onChange}
+          checked={checked}
+        />
+        <CheckboxLabel htmlFor="checkbox">
+          I agree to the terms and conditions.
+        </CheckboxLabel>
+      </>
+    )
+  },
+)
 
 const CheckboxContainer = styled('input')``
 

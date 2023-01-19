@@ -7,28 +7,24 @@ import {
 } from './_styles'
 import { ButtonSize, ButtonProps, ButtonStyle } from './_types'
 
-const Button = forwardRef<HTMLButtonElement ,ButtonProps>(({
-  label,
-  size,
-  buttonStyle,
-  onClick,
-  disabled = false,
-}, ref) => {
-  const buttonSize: ButtonSize = size ?? 'small'
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ label, size, buttonStyle, onClick, disabled = false }, ref) => {
+    const buttonSize: ButtonSize = size ?? 'small'
 
-  const ButtonStyle = getButtonStyle(buttonStyle)
+    const ButtonStyle = getButtonStyle(buttonStyle)
 
-  return (
-    <ButtonStyle
-      ref={ref}
-      onClick={onClick}
-      buttonSize={buttonSize}
-      disabled={disabled}
-    >
-      <ButtonLabel>{label}</ButtonLabel>
-    </ButtonStyle>
-  )
-})
+    return (
+      <ButtonStyle
+        ref={ref}
+        onClick={onClick}
+        buttonSize={buttonSize}
+        disabled={disabled}
+      >
+        <ButtonLabel>{label}</ButtonLabel>
+      </ButtonStyle>
+    )
+  },
+)
 
 const getButtonStyle = (style: ButtonStyle) => {
   if (style === 'primary') return PrimaryButtonStyle

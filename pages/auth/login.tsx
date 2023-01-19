@@ -26,7 +26,6 @@ const LoginPage: NextPage = () => {
       // signIn()
       // router.push('/home')
     }
-
   }
 
   const submittable = !!usernameRef && !!passwordRef
@@ -60,13 +59,11 @@ const LoginPage: NextPage = () => {
             />
           </form>
         </FormContainer>
-        </Row>
+      </Row>
     </WebContainer>
   )
 }
 
-const FormContainer = styled(Col)`
-
-`
+const FormContainer = styled(Col)``
 
 export default LoginPage

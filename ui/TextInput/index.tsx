@@ -4,7 +4,15 @@ import styled from 'styled-components'
 import { TextInputProps, InputSize } from './_types'
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
-  const { label, error, initialValue, size, onChange, password = false } = props
+  const {
+    label,
+    error,
+    initialValue,
+    size,
+    onChange,
+    password = false,
+    required = false,
+  } = props
 
   return (
     <InputField size={size}>
@@ -15,9 +23,12 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, ref) => {
         type={password ? 'password' : 'text'}
         maxLength={20}
         onChange={(e) => {
-          onChange(e.target.value)
+          if (onChange) {
+            onChange(e.target.value)
+          }
         }}
         defaultValue={initialValue}
+        required={required}
       />
     </InputField>
   )
