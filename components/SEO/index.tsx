@@ -9,7 +9,7 @@ const SEO: FC = () => {
     if (router.pathname.includes('/login')) return 'Login'
     if (router.pathname.includes('/create')) return 'Registration'
 
-    return 'Fitness App'
+    return 'Home | Personal Finance'
   }, [router.pathname])
 
   return (
@@ -21,7 +21,7 @@ const SEO: FC = () => {
       />
       <meta
         name="description"
-        content="Fitness app"
+        content="Personal finance app"
       />
       <meta charSet="UTF-8"></meta>
       <link

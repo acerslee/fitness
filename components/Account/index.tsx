@@ -8,11 +8,12 @@ import TextInput from '../../ui/TextInput'
 import Button from '../../ui/Button'
 import WebContainer from '../../ui/Container'
 
+const AccountContent = lazy(() => import('./components/AccountContent'))
+
 const AccountPage: FC = () => {
   const user = useUser()
 
   const [missingData, setMissingData] = useState<boolean>(false)
-  const [makingCall, setMakingCall] = useState<boolean>(false)
 
   const usernameRef = useRef<HTMLInputElement | null>(null)
 
@@ -22,7 +23,6 @@ const AccountPage: FC = () => {
   }, [])
 
   const getAccountData = async (): Promise<void> => {
-    setMakingCall(true)
     try {
       const { data } = await axios.post('/api/getAccount', { user: user?.id })
       if (!data[0].username) {
@@ -31,13 +31,10 @@ const AccountPage: FC = () => {
       }
     } catch(e) {
       console.error(e)
-    } finally {
-      setMakingCall(false)
     }
   }
 
   const accountDataSubmission = async (): Promise<void> => {
-    setMakingCall(true)
     try {
       const response = await axios.post('/api/updateAccount', {
         id: user?.id,
@@ -49,47 +46,41 @@ const AccountPage: FC = () => {
       }
     } catch (e) {
       console.error(e)
-    } finally {
-      setMakingCall(false)
     }
   }
-
-  // Loading state
-  if (makingCall)
-    return (
-      <Spinner
-        animation="border"
-        variant="primary"
-      />
-    )
-
-  console.log(missingData)
-
 
   // Missing username content
   if (missingData) {
     return (
-      <AccountPageContainer>
-        <WebContainer>
-          <TextInput
-            size={'large'}
-            ref={usernameRef}
-            label={'Please enter username'}
-            required
-          />
-          <Button
-            size={'large'}
-            label={'Submit'}
-            buttonStyle={'primary'}
-            onClick={accountDataSubmission}
-          />
-        </WebContainer>
-      </AccountPageContainer>
+      <Suspense fallback={<Spinner animation="border" variant="primary" />}>
+        <AccountPageContainer>
+          <WebContainer>
+            <TextInput
+              size={'large'}
+              ref={usernameRef}
+              label={'Please enter username'}
+              required
+            />
+            <Button
+              size={'large'}
+              label={'Submit'}
+              buttonStyle={'primary'}
+              onClick={accountDataSubmission}
+            />
+          </WebContainer>
+        </AccountPageContainer>
+      </Suspense>
     )
   }
 
-
-  return <AccountPageContainer>hi</AccountPageContainer>
+  // Default content view
+  return (
+    <Suspense fallback={<Spinner animation="border" variant="primary" />}>
+      <AccountPageContainer>
+        <AccountContent />
+      </AccountPageContainer>
+    </Suspense>
+  )
 }
 
 const AccountPageContainer = styled.main`

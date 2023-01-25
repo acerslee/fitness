@@ -7,11 +7,12 @@ import { SessionContextProvider, Session } from '@supabase/auth-helpers-react'
 import GlobalStyle from '../styles/globalStyle'
 import '../styles/custom.scss'
 
-import { supabase } from '../database/supabase'
+import { wrapper, store }from '../store/store'
 
 import SEO from '../components/SEO'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { Provider } from 'react-redux'
 
 function MyApp({
   Component,
@@ -20,19 +21,19 @@ function MyApp({
   const [supabase] = useState(() => createBrowserSupabaseClient())
 
   return (
+    <Provider store={store}>
     <SessionContextProvider
       supabaseClient={supabase}
       initialSession={pageProps.initialSession}
     >
-      {/* <Auth.UserContextProvider supabaseClient={supabase}> */}
       <GlobalStyle />
       <SEO />
       <Navbar />
       <Component {...pageProps} />
       <Footer />
-      {/* </Auth.UserContextProvider>/ */}
     </SessionContextProvider>
+    </Provider>
   )
 }
 
-export default MyApp
+export default wrapper.withRedux(MyApp)
