@@ -8,10 +8,14 @@ import TextInput from '../../ui/TextInput'
 import Button from '../../ui/Button'
 import WebContainer from '../../ui/Container'
 
+import { setUsername } from '../../store/userDataSlice'
+import { useAppDispatch } from '../../hooks/redux'
+
 const AccountContent = lazy(() => import('./components/AccountContent'))
 
 const AccountPage: FC = () => {
   const user = useUser()
+  const dispatch = useAppDispatch()
 
   const [missingData, setMissingData] = useState<boolean>(false)
 
@@ -25,9 +29,13 @@ const AccountPage: FC = () => {
   const getAccountData = async (): Promise<void> => {
     try {
       const { data } = await axios.post('/api/getAccount', { user: user?.id })
+      console.log(data)
       if (!data[0].username) {
         setMissingData(true)
         return
+      } else {
+        console.log(1)
+        dispatch(setUsername(data[0].username))
       }
     } catch(e) {
       console.error(e)
@@ -41,6 +49,7 @@ const AccountPage: FC = () => {
         username: usernameRef.current?.value,
       })
       if (response.data === 'Success') {
+        dispatch(setUsername(usernameRef.current?.value as string))
         setMissingData(false)
         return
       }

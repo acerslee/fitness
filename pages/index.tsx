@@ -1,22 +1,21 @@
+import { useEffect } from 'react'
 import { Auth, ThemeSupa } from '@supabase/auth-ui-react'
 import { useSession, useSupabaseClient } from '@supabase/auth-helpers-react'
 import styled from 'styled-components'
-import { useSelector, useDispatch } from 'react-redux'
 
 import AccountPage from '../components/Account'
 
+import { useAppSelector, useAppDispatch } from '../hooks/redux'
 import { setAuthState, setAuthUserId } from '../store/authSlice'
-import { useEffect } from 'react'
 
 const Home = () => {
   const session = useSession()
   const supabase = useSupabaseClient()
-  const dispatch = useDispatch()
-  // @ts-ignore
-  const auth = useSelector((state) => state.auth.authState)
+  const dispatch = useAppDispatch()
+  const { authState } = useAppSelector(state => state.auth)
 
   useEffect(() => {
-    if (session && !auth) {
+    if (session && !authState) {
       dispatch(setAuthState(!!session.user.role))
       dispatch(setAuthUserId(session.user.id))
     }

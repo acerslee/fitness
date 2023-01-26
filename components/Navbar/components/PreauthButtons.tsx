@@ -2,12 +2,14 @@ import { FC } from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
+import { useSelector } from 'react-redux'
 
 import { PrimaryButton, SecondaryButton } from '../../../ui/Button'
+import { AuthState } from '../../../store/authSlice'
 
 const PreAuthButtons: FC = () => {
   const router = useRouter()
-  const user = useUser()
+  const user = useSelector((state: AuthState) => state.authState)
   const supabaseClient = useSupabaseClient()
 
   return (

@@ -1,17 +1,13 @@
 import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Nav as BootstrapNav } from 'react-bootstrap'
-import { useUser } from '@supabase/auth-helpers-react'
 
 import { useMediaQuery } from '../../../hooks'
 
 import PreAuthButtons from './PreauthButtons'
 
 const NavItems: FC = () => {
-  const user = useUser()
   const isTabletSize = useMediaQuery('(max-width: 1024px)')
-
-  console.log(user)
 
   return (
     <Nav>

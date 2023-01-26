@@ -52,6 +52,7 @@ const CreateAccountPage: NextPage = () => {
           size="large"
           type="submit"
           disabled={!submittable}
+          buttonStyle={'primary'}
         />
       </form>
     </WebContainer>

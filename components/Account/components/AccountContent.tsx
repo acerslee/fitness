@@ -1,13 +1,14 @@
 import React, { FC } from "react";
-import { useUser } from "@supabase/auth-helpers-react";
+import { useSelector } from "react-redux";
+
 import { H2 } from "../../../ui/Text/Heading";
+import { RootState } from "../../../store/store";
 
 const AccountContent: FC = () => {
-  const user = useUser()
-  console.log(user)
+  const { username } = useSelector((state: RootState) => state.user)
   return (
     <main>
-      <H2>Welcome </H2>
+      <H2>{`Welcome ${username}!`}</H2>
     </main>
   )
 }
