@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import styled from 'styled-components'
 import { Nav as BootstrapNav } from 'react-bootstrap'
 
-import { useMediaQuery } from '../../../hooks'
+import { useMediaQuery } from 'hooks'
 
 import PreAuthButtons from './PreauthButtons'
 
@@ -22,6 +22,7 @@ const NavItems: FC = () => {
 const Nav = styled(BootstrapNav)`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 2rem;
 `
 

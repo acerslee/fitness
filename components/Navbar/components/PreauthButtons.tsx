@@ -1,20 +1,20 @@
 import { FC } from 'react'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
-import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
-import { useSelector } from 'react-redux'
+import { useSupabaseClient } from '@supabase/auth-helpers-react'
 
-import { PrimaryButton, SecondaryButton } from '../../../ui/Button'
-import { AuthState } from '../../../store/authSlice'
+import { useAppSelector } from 'hooks/redux'
+
+import { PrimaryButton, SecondaryButton } from 'ui/Button'
 
 const PreAuthButtons: FC = () => {
   const router = useRouter()
-  const user = useSelector((state: AuthState) => state.authState)
+  const { authState } = useAppSelector((state) => state.auth)
   const supabaseClient = useSupabaseClient()
 
   return (
     <ButtonContainer>
-      {user ? (
+      {authState ? (
         <PrimaryButton
           onClick={() => supabaseClient.auth.signOut()}
           label={'Sign out'}

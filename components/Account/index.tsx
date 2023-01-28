@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, useRef, lazy, Suspense} from 'react'
+import { FC, useState, useEffect, useRef, lazy, Suspense } from 'react'
 import { useUser } from '@supabase/auth-helpers-react'
 import axios from 'axios'
 import Spinner from 'react-bootstrap/Spinner'
@@ -29,15 +29,13 @@ const AccountPage: FC = () => {
   const getAccountData = async (): Promise<void> => {
     try {
       const { data } = await axios.post('/api/getAccount', { user: user?.id })
-      console.log(data)
       if (!data[0].username) {
         setMissingData(true)
         return
       } else {
-        console.log(1)
         dispatch(setUsername(data[0].username))
       }
-    } catch(e) {
+    } catch (e) {
       console.error(e)
     }
   }
@@ -61,7 +59,14 @@ const AccountPage: FC = () => {
   // Missing username content
   if (missingData) {
     return (
-      <Suspense fallback={<Spinner animation="border" variant="primary" />}>
+      <Suspense
+        fallback={
+          <Spinner
+            animation="border"
+            variant="primary"
+          />
+        }
+      >
         <AccountPageContainer>
           <WebContainer>
             <TextInput
@@ -84,7 +89,14 @@ const AccountPage: FC = () => {
 
   // Default content view
   return (
-    <Suspense fallback={<Spinner animation="border" variant="primary" />}>
+    <Suspense
+      fallback={
+        <Spinner
+          animation="border"
+          variant="primary"
+        />
+      }
+    >
       <AccountPageContainer>
         <AccountContent />
       </AccountPageContainer>

@@ -1,8 +1,8 @@
-import React, { FC } from "react";
-import { useSelector } from "react-redux";
+import React, { FC } from 'react'
+import { useSelector } from 'react-redux'
 
-import { H2 } from "../../../ui/Text/Heading";
-import { RootState } from "../../../store/store";
+import { H2 } from 'ui/Text/Heading'
+import { RootState } from 'store/store'
 
 const AccountContent: FC = () => {
   const { username } = useSelector((state: RootState) => state.user)

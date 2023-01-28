@@ -7,7 +7,7 @@ import { SessionContextProvider, Session } from '@supabase/auth-helpers-react'
 import GlobalStyle from '../styles/globalStyle'
 import '../styles/custom.scss'
 
-import { wrapper, store }from '../store/store'
+import { wrapper, store } from '../store/store'
 
 import SEO from '../components/SEO'
 import Navbar from '../components/Navbar'
@@ -22,16 +22,16 @@ function MyApp({
 
   return (
     <Provider store={store}>
-    <SessionContextProvider
-      supabaseClient={supabase}
-      initialSession={pageProps.initialSession}
-    >
-      <GlobalStyle />
-      <SEO />
-      <Navbar />
-      <Component {...pageProps} />
-      <Footer />
-    </SessionContextProvider>
+      <SessionContextProvider
+        supabaseClient={supabase}
+        initialSession={pageProps.initialSession}
+      >
+        <GlobalStyle />
+        <SEO />
+        <Navbar />
+        <Component {...pageProps} />
+        <Footer />
+      </SessionContextProvider>
     </Provider>
   )
 }

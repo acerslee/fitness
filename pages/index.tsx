@@ -12,8 +12,9 @@ const Home = () => {
   const session = useSession()
   const supabase = useSupabaseClient()
   const dispatch = useAppDispatch()
-  const { authState } = useAppSelector(state => state.auth)
+  const { authState } = useAppSelector((state) => state.auth)
 
+  // If user is not logged in, set redux auth state to include auth credentials.
   useEffect(() => {
     if (session && !authState) {
       dispatch(setAuthState(!!session.user.role))
